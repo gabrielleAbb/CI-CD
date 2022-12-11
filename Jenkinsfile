@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         //be sure to replace "willbla" with your own Docker Hub username
-        DOCKER_IMAGE_NAME ="192474"
+        DOCKER_IMAGE_NAME ="192474/CICD"
     }
     stages {
         stage('Build') {
