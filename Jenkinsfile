@@ -8,8 +8,8 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Running build automation'
-                sh './gradlew build --no-daemon'
-                archiveArtifacts artifacts: 'dist/CICD.zip'
+              //  sh './gradlew build --no-daemon'
+              //  archiveArtifacts artifacts: 'dist/CICD.zip'
             }
         }
         stage('Build Docker Image') {
@@ -47,9 +47,9 @@ pipeline {
             }
             steps {
                 kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
-                    configs: 'CICD.yml',
-                    enableConfigSubstitution: true
+                   // kubeconfigId: 'kubeconfig',
+                   // configs: 'CICD.yml',
+                   // enableConfigSubstitution: true
                 )
             }
         }
@@ -64,13 +64,13 @@ pipeline {
                 input 'Deploy to Production?'
                 milestone(1)
                 kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
-                    configs: 'CICD.yml',
-                    enableConfigSubstitution: true
+                  //  kubeconfigId: 'kubeconfig',
+                   // configs: 'CICD.yml',
+                   // enableConfigSubstitution: true
                 )
                 kubernetesDeploy(
-                    kubeconfigId: 'kubeconfig',
-                    configs: 'CICD.yml',
+                   // kubeconfigId: 'kubeconfig',
+                    // configs: 'CICD.yml',
                     enableConfigSubstitution: true
                 )
             }
